@@ -8,13 +8,17 @@ Car.prototype.move = function() {
 };
 
 var Van = function(loc) {
-    Van.prototype = Car(loc);
+    Car.call(this, loc);
 };
-
+Van.prototype = Object.create(Car.prototype);
+//Van.prototype.constructor = Van;
 
 /* run.js */
 var zed = new Car(3);
 zed.move();
 
 var amy = new Van(9);
-amy.move()
+console.log(amy.loc);
+console.log(Van.prototype);
+amy.move();
+amy.grab();
